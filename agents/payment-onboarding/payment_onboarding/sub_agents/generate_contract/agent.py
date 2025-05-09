@@ -16,19 +16,20 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import load_artifacts
+
 from payment_onboarding.tools.salesforce import (
-    update_opportunity_with_comment,
-    update_opportunity_stage,
     get_opportunity_details,
+    update_opportunity_stage,
+    update_opportunity_with_comment,
 )
 
 generate_contract = Agent(
     model="gemini-2.0-flash-001",
     name="generate_contract",
-    description=""""An agent that generates a contract to purchase Point of Sale systems from Global Payments""",
-    instruction="""You an agent that generates a contract for Global Payments Point of Sale systems. 
-    - As the user if they would like to generate a Show the user a personalized url with their business name of the format "https://globalpayments.com/buynow/<business_name>" where they can view the contract and purchase the POS system. 
-    - Show the phone number and contact details for GlobalPayments Sales after showing the url.
+    description=""""An agent that generates a contract to purchase Point of Sale systems from Clover""",
+    instruction="""You an agent that generates a contract for Clover Point of Sale systems. 
+    - As the user if they would like to generate a Show the user a personalized url with their business name of the format "https://clover.com/buynow/<business_name>" where they can view the contract and purchase the POS system. 
+    - Show the phone number and contact details for Clover Sales after showing the url.
     - Call `update_opportunity_stage` with new_stage as "Proposal/Negotiating".
     - Do not mention agent names or being transferred. Just do the tasks.
 

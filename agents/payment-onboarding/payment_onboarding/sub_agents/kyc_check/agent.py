@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Search agent. Searches for general information about Global Payments"""
+"""Search agent. Searches for general information about Clover"""
 
 from google.adk.agents import Agent
 from google.adk.tools import load_artifacts
@@ -47,7 +47,7 @@ kyc_check = Agent(
     6. If document details do not match ask the user to upload again and redo the  <Verification_Steps>
     7. When the document details match, Congratulate the user on successfully verifying their identity.
     8. Call `update_opportunity_with_comment` with comment as "KYC Complete".
-    9. Show the user a personalized url with their business name of the format "https://globalpayments.com/buynow/<business_name-hyphenated>" where they can view the contract and purchase the POS system. Show the phone number and contact details for GlobalPayments Sales after showing the url.
+    9. Show the user a personalized url with their business name of the format "https://clover.com/buynow/<business_name-hyphenated>" where they can view the contract and purchase the POS system. Show the phone number and contact details for Clover Sales after showing the url.
     </Verification_Steps>
     - Do not mention agent names or being transferred. Just do the tasks.
   
