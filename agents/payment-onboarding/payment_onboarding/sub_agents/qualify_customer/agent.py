@@ -25,7 +25,7 @@ from payment_onboarding.sub_agents.qualify_customer import prompt
 from payment_onboarding.tools.places import map_tool
 
 lookup_agent = Agent(
-    model="gemini-2.5-pro-preview-03-25",
+    model="gemini-2.5-flash-preview-04-17",
     name="lookup_agent",
     description="This agent looks up business listings",
     instruction=prompt.LOOKUP_AGENT_INSTR,
