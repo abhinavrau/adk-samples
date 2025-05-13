@@ -16,13 +16,12 @@
 
 from google.adk.agents import Agent
 
-from payment_onboarding import prompt
-from payment_onboarding.sub_agents.generate_contract.agent import generate_contract
-from payment_onboarding.sub_agents.kyc_check.agent import kyc_check
-from payment_onboarding.sub_agents.product_recommender.agent import (
+from product_onboarding import prompt
+from product_onboarding.sub_agents.kyc_check.agent import kyc_check
+from product_onboarding.sub_agents.product_recommender.agent import (
     product_recommender_agent,
 )
-from payment_onboarding.sub_agents.qualify_customer.agent import qualify_customer_agent
+from product_onboarding.sub_agents.qualify_customer.agent import qualify_customer_agent
 
 root_agent = Agent(
     model="gemini-2.0-flash-001",

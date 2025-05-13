@@ -1,5 +1,5 @@
 [project]
-name = "payment-onboarding"
+name = "product-onboarding"
 version = "0.1.0"
 description = "Customer On boarding agent for a Payment Processing company"
 authors = [

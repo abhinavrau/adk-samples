@@ -15,19 +15,14 @@
 """Validate Business agent. Finds and verifies a business using name and location"""
 
 from google.adk.agents import Agent
-from google.adk.tools.agent_tool import AgentTool
 
-from payment_onboarding.shared_libraries.types import (
-    BusinessSuggestions,
-    json_response_config,
-)
-from payment_onboarding.sub_agents.qualify_customer import prompt
-from payment_onboarding.tools.places import find_businesses_from_text
+from product_onboarding.sub_agents.qualify_customer import prompt
+from product_onboarding.tools.places import find_business_from_google_maps
 
 qualify_customer_agent = Agent(
     model="gemini-2.5-pro-preview-05-06",
     name="qualify_customer_agent",
     description="A validate business agent who helps users verify their business listing using business name and location",
     instruction=prompt.VERIFY_BUSINESS_AGENT_INSTR,
-    tools=[find_businesses_from_text],
+    tools=[find_business_from_google_maps],
 )

@@ -20,18 +20,17 @@ from typing import Optional
 
 import PIL.Image
 from google.adk.agents import Agent
-from google.adk.models import LlmRequest, LlmResponse
-from google.adk.tools import ToolContext, VertexAiSearchTool, load_artifacts
+from google.adk.tools import ToolContext
 from google.adk.tools.agent_tool import AgentTool
 from google.genai import Client, types
-from PIL import Image
 
-from payment_onboarding.tools.salesforce import (
+from product_onboarding.sub_agents.product_recommender import prompt, vaisearch
+from product_onboarding.tools.salesforce import (
     get_opportunity_details,
     update_opportunity_stage,
     update_opportunity_with_comment,
 )
-from payment_onboarding.tools.search import google_search_grounding
+from product_onboarding.tools.search import google_search_grounding
 
 # Only Vertex AI supports image generation for now.
 client = Client()
@@ -68,14 +67,6 @@ def _load_image_from_user_content(
     else:
         print("No user_content or parts found in tool_context.")
         return None, None
-
-
-from payment_onboarding.shared_libraries.types import (
-    BusinessSuggestions,
-    json_response_config,
-)
-from payment_onboarding.sub_agents.product_recommender import prompt, vaisearch
-from payment_onboarding.tools.places_old import map_tool
 
 
 def image_editor(prompt: str, tool_context: "ToolContext"):
@@ -288,7 +279,7 @@ search_agent = Agent(
     # model="gemini-2.0-flash",
     model="gemini-2.5-flash-preview-04-17",
     name="search_agent",
-    description="Searches for general information about Clover",
+    description=f"""Searches for general information about {os.getenv("AGENT_COMPANY_NAME", "ACME Corp")}""",
     instruction=prompt.SEARCH_AGENT_INSTR,
     tools=[google_search_grounding],
 )

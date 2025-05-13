@@ -5,7 +5,7 @@
             "name": "Python Debugger: Payment Onboarding Agent",
             "type": "debugpy",
             "request": "launch",
-            "program": "/usr/local/google/home/arau/code/adk-samples/agents/payment-onboarding/.venv/bin/adk",
+            "program": "./.venv/bin/adk",
             "console": "integratedTerminal",
             "args": "web",
             "cwd": "${workspaceFolder}"

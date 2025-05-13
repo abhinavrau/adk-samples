@@ -11,3 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+"""Basic evaluation of the travel concierge agent."""
+
+import pathlib
+
+import dotenv
+import pytest
+from google.adk.evaluation import AgentEvaluator
+
+
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    dotenv.load_dotenv()
+
+
+def test_acme():
+    """Test the agent's basic flow with acme corp as company name"""
+    AgentEvaluator.evaluate(
+        agent_module="product_onboarding",
+        eval_dataset_file_path_or_dir=str(pathlib.Path(__file__).parent / "data/"),
+        num_runs=1,
+    )
