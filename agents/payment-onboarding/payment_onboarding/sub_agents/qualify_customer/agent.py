@@ -22,24 +22,12 @@ from payment_onboarding.shared_libraries.types import (
     json_response_config,
 )
 from payment_onboarding.sub_agents.qualify_customer import prompt
-from payment_onboarding.tools.places import map_tool
-
-lookup_agent = Agent(
-    model="gemini-2.5-flash-preview-04-17",
-    name="lookup_agent",
-    description="This agent looks up business listings",
-    instruction=prompt.LOOKUP_AGENT_INSTR,
-    # disallow_transfer_to_parent=True,
-    # disallow_transfer_to_peers=True,
-    output_schema=BusinessSuggestions,
-    output_key="poi",
-    generate_content_config=json_response_config,
-)
+from payment_onboarding.tools.places import find_businesses_from_text
 
 qualify_customer_agent = Agent(
-    model="gemini-2.5-pro-preview-03-25",
+    model="gemini-2.5-pro-preview-05-06",
     name="qualify_customer_agent",
     description="A validate business agent who helps users verify their business listing using business name and location",
     instruction=prompt.VERIFY_BUSINESS_AGENT_INSTR,
-    tools=[AgentTool(agent=lookup_agent), map_tool],
+    tools=[find_businesses_from_text],
 )

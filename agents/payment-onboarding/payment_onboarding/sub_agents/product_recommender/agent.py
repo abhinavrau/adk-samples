@@ -75,7 +75,7 @@ from payment_onboarding.shared_libraries.types import (
     json_response_config,
 )
 from payment_onboarding.sub_agents.product_recommender import prompt, vaisearch
-from payment_onboarding.tools.places import map_tool
+from payment_onboarding.tools.places_old import map_tool
 
 
 def image_editor(prompt: str, tool_context: "ToolContext"):
@@ -286,7 +286,7 @@ image_editor_agent = Agent(
 
 search_agent = Agent(
     # model="gemini-2.0-flash",
-    model="gemini-2.5-pro-preview-03-25",
+    model="gemini-2.5-flash-preview-04-17",
     name="search_agent",
     description="Searches for general information about Clover",
     instruction=prompt.SEARCH_AGENT_INSTR,
